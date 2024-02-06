@@ -1,0 +1,12 @@
+services:
+    fieldsets-cache:
+      networks:
+        default:
+          ipv4_address: ${CACHE_HOST:-172.28.0.20}
+      logging:
+        driver: fluentd
+        options:
+          fluentd-address: ${LOGGER_HOST:-172.28.0.2}:${LOGGER_PORT:-24224}
+          tag: debug_log.redis
+          fluentd-async: "true"
+          env: "PGOPTIONS='-c search_path=pipeline',LOGGING_ENABLED='${LOGGING_ENABLED:-false}'"
