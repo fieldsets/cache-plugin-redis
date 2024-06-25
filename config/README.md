@@ -1,0 +1,2 @@
+# Docker Compose Overrides
+The top level `docker-compose.yml` file allows plugins to run standalone. Override config files found in this directory are use for integrations into the fieldsets frame work.

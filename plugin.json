@@ -1,0 +1,5 @@
+{
+    "name": "Fieldsets Redis Cache",
+    "token": "cache-plugin-redis",
+    "version": "1.0.0"
+}

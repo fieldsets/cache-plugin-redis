@@ -1,6 +1,23 @@
 .env
 *.env
-.log
+
+*.crt
+*.pem
+*_rsa
+id_rsa
+
+./src/*
+!./src
+
+./certs/*
+!./certs
+!./certs/README.md
+
+data/*
+!data
+
+plugins/*
+!plugins
 
 # Editor output
 .vscode/
