@@ -22,7 +22,7 @@ export DATA_PATH=/checkpoints/${ENVIRONMENT}/plugins/cache-plugin-redis/
 # Functions
 #===
 # Includes Methods traperr, wait_for_threads, log
-source /fieldsets-lib/bash/utils.sh
+source /usr/local/fieldsets/lib/bash/utils.sh
 
 ##
 # start: Wrapper start up function. Executes everything in mapped init directory.

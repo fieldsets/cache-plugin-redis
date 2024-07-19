@@ -6,7 +6,7 @@ Param(
 [Environment]::SetEnvironmentVariable("FieldSetsLastCheckpoint", $null, "User")
 [Environment]::SetEnvironmentVariable("FieldSetsLastPriority", $null, "User")
 
-$utils_module_path = [System.IO.Path]::GetFullPath("/fieldsets-lib/pwsh/")
+$utils_module_path = [System.IO.Path]::GetFullPath("/usr/local/fieldsets/lib/pwsh/")
 Import-Module -Function lockfileExists, createLockfile -Name "$($utils_module_path)/utils.psm1"
 Import-Module -Function isPluginPhaseContainer -Name "$($utils_module_path)/plugins.psm1"
 
@@ -19,8 +19,8 @@ $lockfile_path = "/checkpoints/$($envname)/plugins/cache-plugin-redis/phases/"
 if (!(Test-Path -Path "$($lockfile_path)/$($phase)/")) {
     New-Item -Path "$($lockfile_path)" -Name "$($phase)" -ItemType Directory
 }
-Set-Location -Path "/fieldsets-plugins/" | Out-Null
-$plugin_dirs = Get-ChildItem -Path "/fieldsets-plugins/*" -Directory | Select-Object FullName, Name, BaseName, LastWriteTime, CreationTime
+Set-Location -Path "/usr/local/fieldsets/plugins/" | Out-Null
+$plugin_dirs = Get-ChildItem -Path "/usr/local/fieldsets/plugins/*" -Directory | Select-Object FullName, Name, BaseName, LastWriteTime, CreationTime
 # Check to make sure all plugin dependencies are met.
 foreach ($plugin in $plugin_dirs) {
     if (isPluginPhaseContainer -plugin "$($plugin.BaseName)") {
@@ -38,7 +38,7 @@ foreach ($plugin in $plugin_dirs) {
 }
 [Environment]::SetEnvironmentVariable("FieldSetsLastCheckpoint", $script_token, "User")
 [Environment]::SetEnvironmentVariable("FieldSetsLastPriority", $priority, "User")
-Set-Location -Path "/fieldsets/" | Out-Null
+Set-Location -Path "/usr/local/fieldsets/apps/" | Out-Null
 
 Exit
 Exit-PSHostProcess

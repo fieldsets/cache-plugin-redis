@@ -23,11 +23,11 @@ services:
         volumes:
             - redis-data:/data
             - redis-modules:/modules
-            - ${REDIS_PLUGIN_PATH:-./}plugins:/fieldsets-plugins/
-            - ${REDIS_PLUGIN_PATH:-./}lib:/fieldsets-lib/
-            - ${REDIS_PLUGIN_PATH:-./}data:/fieldsets-data/
-            - ${REDIS_PLUGIN_PATH:-./}src:/fieldsets/
-            - ${REDIS_PLUGIN_PATH:-./}bin/:/fieldsets-bin/
+            - ${REDIS_PLUGIN_PATH:-./}plugins:/usr/local/fieldsets/plugins/
+            - ${REDIS_PLUGIN_PATH:-./}lib:/usr/local/fieldsets/lib/
+            - ${REDIS_PLUGIN_PATH:-./}data:/usr/local/fieldsets/data/
+            - ${REDIS_PLUGIN_PATH:-./}src:/usr/local/fieldsets/apps/
+            - ${REDIS_PLUGIN_PATH:-./}bin/:/usr/local/fieldsets/bin/
             - ${REDIS_PLUGIN_PATH:-./}init/:/docker-entrypoint-init.d/
             - ${REDIS_PLUGIN_PATH:-./}entrypoint.sh:/docker-entrypoint.sh
 
