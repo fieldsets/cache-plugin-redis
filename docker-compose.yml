@@ -1,4 +1,3 @@
-version: '3.7'
 services:
     fieldsets-cache:
         image: ${CONTAINER_REGISTRY:-fieldsets}/cache-plugin-redis:${REDIS_VERSION:-latest}
