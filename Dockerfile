@@ -31,9 +31,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
         libgdiplus \
         zlib1g && \
     bash /root/.local/bin/root-certs.sh /tmp/certs/ && \
-    #@TODO: Check here to see if Debian 12 has powershell package yet
-    # https://github.com/PowerShell/PowerShell/issues/19889
-    wget -q https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -P /tmp/ && \
+    wget -q https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -P /tmp/ && \
     dpkg -i /tmp/packages-microsoft-prod.deb && \
     rm /tmp/packages-microsoft-prod.deb && \
     apt-get -y update && \
@@ -41,7 +39,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
     apt-get autoremove -y && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*
-
 
     ENTRYPOINT ["/docker-entrypoint.sh"]
 
