@@ -1,6 +1,8 @@
 {
     "name": "Fieldsets Redis Cache",
     "token": "cache-plugin-redis",
+    "url": "https://github.com/fieldsets/cache-plugin-redis",
+    "license": "AGPL-3.0",
     "version": "1.0.0",
     "priority": "10",
     "enabled": true
