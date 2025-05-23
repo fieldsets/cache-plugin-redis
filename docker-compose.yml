@@ -17,11 +17,16 @@ services:
             ENVIRONMENT: ${ENVIRONMENT:-dev-local}
             REDIS_HOST: ${REDIS_HOST:-0.0.0.0}
             REDIS_PORT: ${REDIS_PORT:-6379}
+            SSH_KEY_PATH: ${SSH_KEY_PATH:-~/.ssh/}
+            SSH_PORT: ${SSH_PORT:-1022}
+            FIELDSETS_SESSION_KEY: ${FIELDSETS_SESSION_KEY:-fieldsets_rsa}
+            FIELDSETS_LOCAL_HOST: ${FIELDSETS_LOCAL_HOST:-172.28.0.6}
             PUID: ${LOCAL_UID:-1000}
             PGID: ${LOCAL_GID:-1000}
         volumes:
             - redis-data:/data
             - redis-modules:/modules
+            - ${SSH_KEY_PATH:-~/.ssh/}:/root/.ssh/
             - ${REDIS_PLUGIN_PATH:-./}plugins:/usr/local/fieldsets/plugins/
             - ${REDIS_PLUGIN_PATH:-./}lib:/usr/local/fieldsets/lib/
             - ${REDIS_PLUGIN_PATH:-./}data:/usr/local/fieldsets/data/

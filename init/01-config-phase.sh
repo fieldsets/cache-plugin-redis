@@ -8,11 +8,11 @@ Param(
  ##>
 $script_token = "$($phase)-phase"
 $module_path = [System.IO.Path]::GetFullPath("/usr/local/fieldsets/lib/pwsh")
-Import-Module -Function isPluginPhaseContainer, buildPluginPriortyList -Name "$($module_path)/plugins.psm1"
+Import-Module -Function isPluginPhaseContainer, getPluginPriorityList -Name "$($module_path)/plugins.psm1"
 
 Set-Location -Path "/usr/local/fieldsets/plugins/" | Out-Null
 # Ordered plugins by priority
-$plugins_priority_list = buildPluginPriortyList
+$plugins_priority_list = getPluginPriorityList
 foreach ($plugin_dirs in $plugins_priority_list.Values) {
     foreach ($plugin_dir in $plugin_dirs) {
         if ($null -ne $plugin_dir) {

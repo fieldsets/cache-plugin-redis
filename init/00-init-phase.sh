@@ -14,7 +14,7 @@ Param(
 
 $module_path = [System.IO.Path]::GetFullPath("/usr/local/fieldsets/lib/pwsh")
 Import-Module -Function lockfileExists, createLockfile -Name "$($module_path)/utils.psm1"
-Import-Module -Function checkDependencies, isPluginPhaseContainer, buildPluginPriortyList -Name "$($module_path)/plugins.psm1"
+Import-Module -Function checkDependencies, isPluginPhaseContainer, getPluginPriorityList -Name "$($module_path)/plugins.psm1"
 
 $script_token = "$($phase)-phase"
 $envname = [System.Environment]::GetEnvironmentVariable('ENVIRONMENT')
@@ -42,7 +42,7 @@ $dependencies_met = checkDependencies
 if ($dependencies_met) {
     Set-Location -Path "/usr/local/fieldsets/plugins/" | Out-Null
     # Ordered plugins by priority
-    $plugins_priority_list = buildPluginPriortyList
+    $plugins_priority_list = getPluginPriorityList
     foreach ($plugin_dirs in $plugins_priority_list.Values) {
         foreach ($plugin_dir in $plugin_dirs) {
             if ($null -ne $plugin_dir) {
