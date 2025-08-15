@@ -5,5 +5,5 @@
     "license": "AGPL-3.0",
     "version": "1.0.0",
     "priority": "10",
-    "enabled": true
+    "enabled": false
 }
